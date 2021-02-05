@@ -106,7 +106,9 @@ void cmdapp_print_help(cmdapp_t* app) {
     printf("\n");
     printf("%s\n", app->_info.description);
     printf("\n");
-    printf("Options:\n");
+    if(!app->_length)
+      return;
+    printf("Options: \n");
     for (int i = 0; i < app->_argc; i++) {
         cmdarg_internal_t* arg_int = app->_start[i];
         printf("                    %s\r", arg_int->description);
